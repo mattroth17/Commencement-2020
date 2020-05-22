@@ -12,13 +12,13 @@ function Square(props) {
   );
 }
 
-function Reset(props) {
+
+function Article(props) {
   return (
-    <button className='reset' onClick={props.onClick}>
-      Press to Reset
-    </button>
-  )
+    <div className='article'>{props.title}</div>
+  );
 }
+
 
 class Board extends React.Component {
   renderSquare(i) {
@@ -94,18 +94,7 @@ class Background extends React.Component {
   }
 }
 
-class Content extends React.Component {
 
-  render() {
-    
-    return (
-      <div>
-        <Messages/>
-        <Articles/>
-      </div>
-    );
-  }
-}
 
 class Messages extends React.Component {
 
@@ -119,11 +108,46 @@ class Messages extends React.Component {
 }
 
 class Articles extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      articles: [
+        {title: 'article 1', URL: 'google.com', imageURL: './class_of_2020.jpg', author: 'jack'}, 
+        {title: 'article 2', URL: 'google.com', imageURL: './class_of_2020.jpg', author: 'jack'}, 
+        {title: 'article 3', URL: 'google.com', imageURL: './class_of_2020.jpg', author: 'jack'}, 
+        {title: 'article 4', URL: 'google.com', imageURL: './class_of_2020.jpg', author: 'jack'}, 
+        {title: 'article 5', URL: 'google.com', imageURL: './class_of_2020.jpg', author: 'jack'}, 
+        {title: 'article 6', URL: 'google.com', imageURL: './class_of_2020.jpg', author: 'jack'}, 
+      
+      ],
+      
+    }
+  }
+
+  renderArticle(i) {
+    return ( 
+      <Article 
+        title={this.state.articles[i].title} 
+      />
+    ); 
+  }
 
   render() {
     
     return (
       <div>
+        <div className="article-row">
+          {this.renderArticle(0)}
+          {this.renderArticle(1)}
+        </div>
+        <div className="article-row">
+          {this.renderArticle(2)}
+          {this.renderArticle(3)}
+        </div>
+        <div className="article-row">
+          {this.renderArticle(4)}
+          {this.renderArticle(5)}
+        </div>
       </div>
     );
   }

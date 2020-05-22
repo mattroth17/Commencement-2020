@@ -19,6 +19,8 @@ ol, ul {
 
 .square {
   background: #fff;
+  position: relative;
+  left: 100px;
   border: 1px solid #999;
   float: left;
   font-size: 24px;
@@ -96,3 +98,27 @@ ol, ul {
   right: 0; 
   top: 236px; 
 }
+
+.article-row:after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.article {
+  background: #fff;
+  position: relative;
+  
+  border: 1px solid #999;
+  float: left;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 34px;
+  height: 300px;
+  margin-right: -1px;
+  margin-top: -1px;
+  padding: 0;
+  text-align: center;
+  width: 49%;
+}
+
