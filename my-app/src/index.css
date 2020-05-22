@@ -49,3 +49,50 @@ ol, ul {
   margin-left: 20px;
 }
 
+.header {
+  border: 1px solid #999;
+  height: 34px;
+  margin-right: 0px;
+  margin-top: 0px;
+  width: 100%;
+  position: absolute;
+  top: 2px; 
+}
+
+
+.background {
+  border: 1px solid #999;
+  height: 200px;
+  margin-right: 0px;
+  margin-top: 0px;
+  width: 100%;
+  position: absolute;
+  top: 36px; 
+}
+
+/* img { 
+  display: flexbox;
+} */
+
+.messages {
+  border: 1px solid #999;
+  float: left; 
+  height: 1000px; 
+  margin-right: 0px;
+  margin-top: 0px;
+  width: 50%;
+  position: absolute;
+  top: 236px; 
+}
+
+.articles {
+  border: 1px solid #999;
+  
+  height: 1000px; 
+  margin-right: -22px;
+  margin-top: 0px;
+  width: 50%;
+  position: absolute;
+  right: 0; 
+  top: 236px; 
+}
