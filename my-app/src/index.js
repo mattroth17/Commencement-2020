@@ -19,48 +19,12 @@ function Article(props) {
   );
 }
 
-
-class Board extends React.Component {
-  renderSquare(i) {
-    return ( 
-      <Square 
-        value={this.props.squares[i]} 
-        onClick={() => this.props.onClick(i)}
-      />
-    ); 
-  }
-
-  render() {
-    
-    return (
-      <div>
-        <div className="board-row">
-          {this.renderSquare(0)}
-          {this.renderSquare(1)}
-          {this.renderSquare(2)}
-        </div>
-        <div className="board-row">
-          {this.renderSquare(3)}
-          {this.renderSquare(4)}
-          {this.renderSquare(5)}
-        </div>
-        <div className="board-row">
-          {this.renderSquare(6)}
-          {this.renderSquare(7)}
-          {this.renderSquare(8)}
-        </div>
-        
-      </div>
-    );
-  }
-}
-
 class Header extends React.Component {
 
   render() {
     
     return (
-      <div>
+      <div className="header">
         {/* <div className="board-row">
           {this.renderSquare(0)}
           {this.renderSquare(1)}
@@ -87,8 +51,8 @@ class Background extends React.Component {
   render() {
     
     return (
-      <div>
-        <img src={im_background} width='100%' alt="class pic"/>
+      <div className="background">
+        <img className="background-image" src={im_background} alt="class pic"/>
       </div>
     );
   }
@@ -101,7 +65,7 @@ class Messages extends React.Component {
   render() {
     
     return (
-      <div>
+      <div className="messages">
       </div>
     );
   }
@@ -112,7 +76,7 @@ class Articles extends React.Component {
     super(props);
     this.state = {
       articles: [
-        {title: 'article 1', URL: 'google.com', imageURL: './class_of_2020.jpg', author: 'jack'}, 
+        {title: 'article 1', URL: 'google.com', imageURL: './class_of_2020.jpg', author: 'jack', previewText: 'dnajndjandjsnjnaskjajsbdajbdajbdhbsdhbshdbhb'}, 
         {title: 'article 2', URL: 'google.com', imageURL: './class_of_2020.jpg', author: 'jack'}, 
         {title: 'article 3', URL: 'google.com', imageURL: './class_of_2020.jpg', author: 'jack'}, 
         {title: 'article 4', URL: 'google.com', imageURL: './class_of_2020.jpg', author: 'jack'}, 
@@ -135,7 +99,7 @@ class Articles extends React.Component {
   render() {
     
     return (
-      <div>
+      <div className="articles">
         <div className="article-row">
           {this.renderArticle(0)}
           {this.renderArticle(1)}
@@ -156,59 +120,7 @@ class Articles extends React.Component {
 class Page extends React.Component {
   constructor(props) {
     super(props);
-  //   this.state = {
-  //     history: [{
-  //       squares: Array(9).fill(null),
-  //     }],
-  //     xIsNext: true,
-  //     stepNumber: 0
-  //   };
   }
-
-  // renderReset() {
-  //   return (
-  //     <Reset
-  //       onClick={() => this.resetClick()}
-  //     />
-  //   );
-  // }
-
-  // resetClick() {
-  //   this.setState({
-  //     history: [{
-  //       squares: Array(9).fill(null),
-  //     }],
-  //     stepNumber: 0,
-  //     xIsNext: true
-  //    });
-  // }
-
-
-  // handleClick(i) {
-  //   const history = this.state.history.slice(0, this.state.stepNumber + 1); 
-  //   const current = history[history.length - 1];
-  //   const squares = current.squares.slice();
-  //   if (calculateWinner(squares) || squares[i]) {
-  //     return; 
-  //   }
-  //   squares[i] = this.state.xIsNext ? 'X' : 'O'; 
-  //   this.setState({
-  //     history: history.concat([
-  //       {
-  //       squares: squares
-  //       }
-  //     ]),
-  //     stepNumber: history.length, 
-  //     xIsNext: !this.state.xIsNext
-  //   });
-  // }
-
-  // jumpTo(step) {
-  //   this.setState({
-  //     stepNumber: step, 
-  //     xIsNext: (step % 2) === 0
-  //   });
-  // }
 
 
   render() {
@@ -234,19 +146,13 @@ class Page extends React.Component {
     // }
     return (
       <div className="page">
-        <div className="header">
-          <Header 
-            // squares={current.squares}
-            // onClick={(i) => this.handleClick(i)}
-          />
-        </div>
-        <div className='background'>
-            <Background/>
-        </div>
-        <div className='messages'>
+        <Header 
+          // squares={current.squares}
+          // onClick={(i) => this.handleClick(i)}
+        />
+        <Background/>
+        <div className="bottom-part">
           <Messages/>
-        </div>
-        <div className='articles'>
           <Articles/>
         </div>
       </div>
