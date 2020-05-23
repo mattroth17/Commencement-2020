@@ -88,7 +88,7 @@ class Background extends React.Component {
     
     return (
       <div>
-        {/* <img src={im_background} width='100%' alt="class pic"/> */}
+        <img src={im_background} width='100%' alt="class pic"/>
       </div>
     );
   }
