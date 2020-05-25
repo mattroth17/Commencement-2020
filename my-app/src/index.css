@@ -69,3 +69,34 @@ body {
   text-align: center;
 }
 
+.article_image {
+  display: flex; 
+  position: relative; 
+  width: 90%; 
+  height: auto; 
+  display: inline-block;
+}
+
+.article_title {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 16px;
+  text-align: left;
+  color: #000000;
+  margin-left: 20px;
+}
+
+.article_author {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 16px;
+  text-align: left;
+  color: #000000;
+  margin-left: 20px;
+  margin-top: 5px;
+}
+
