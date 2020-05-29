@@ -58,7 +58,6 @@ body {
 .article {
   flex: 1;
   background: #fff;
-  
   border: 1px solid #999;
   font-size: 24px;
   font-weight: bold;
@@ -69,7 +68,6 @@ body {
 
 .article_image {
   display: flex; 
-  position: relative; 
   width: 90%; 
   height: auto; 
   display: inline-block;
