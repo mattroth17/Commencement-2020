@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import im_background from './class_of_2020.jpg';
+import { Map } from 'immutable';
+import * as db from './services/datastore';
 
 
 function Article(props) {
@@ -27,6 +29,8 @@ function Abstract(props) {
     </button>
   );
 }
+
+
 
 class Header extends React.Component {
 
@@ -67,14 +71,61 @@ class Background extends React.Component {
   }
 }
 
+class InputMessage extends React.Component {
+
+    constructor(props) {
+      super(props);
+      this.state = {value: ''};
+  
+      this.handleChange = this.handleChange.bind(this);
+      this.handleSubmit = this.handleSubmit.bind(this);
+    }
+  
+    handleChange(event) {
+      this.setState({value: event.target.value});
+    }
+  
+    handleSubmit(event) {
+      alert('A message was submitted: ' + this.state.value);
+      event.preventDefault();
+      
+    }
+
+    // this function does not work
+    addMessage(id, newMessage) {
+      db.addNote(id, newMessage);
+    }
+  
+    render() {
+      return (
+        <form onSubmit={this.handleSubmit}>
+          <label>
+            Enter your own message to the seniors!
+            <input type="text" value={this.state.value} onChange={this.handleChange} />
+          </label>
+          <input type="submit" value="Submit" />
+        </form>
+      );
+    }
+  
+}
+
 
 
 class Messages extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      messages: Map(),
+      message_count: 1
+    };
+  }
 
   render() {
     
     return (
       <div className="messages">
+        <InputMessage/> 
       </div>
     );
   }
@@ -159,17 +210,17 @@ class Articles extends React.Component {
 
   renderArticle(i) {
     if(this.state.articles[i].hasMouse === 'no'){
-    return ( 
-      <Article 
-        onMouseEnter = {() => this.handleMouse(i)}
-        onMouseLeave = {() => this.handleLeave(i)}
-        title={this.state.articles[i].title} 
-        URL={this.state.articles[i].URL}
-        onClick = {() => this.handleClick(this.state.articles[i].URL)}
-        imageURL={this.state.articles[i].imageURL}
-        author={this.state.articles[i].author}
-      />
-          );
+      return ( 
+        <Article 
+          onMouseEnter = {() => this.handleMouse(i)}
+          onMouseLeave = {() => this.handleLeave(i)}
+          title={this.state.articles[i].title} 
+          URL={this.state.articles[i].URL}
+          onClick = {() => this.handleClick(this.state.articles[i].URL)}
+          imageURL={this.state.articles[i].imageURL}
+          author={this.state.articles[i].author}
+        />
+            );
     }
     else{
       return(
@@ -205,10 +256,7 @@ class Articles extends React.Component {
 }
 
 class Page extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
+  
 
   render() {
     // const history = this.state.history; 
