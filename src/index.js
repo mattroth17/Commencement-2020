@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import im_background from './class_of_2020.jpg';
+import * as db from './services/datastore';
 
 
 function Article(props) {
@@ -27,6 +28,8 @@ function Abstract(props) {
     </button>
   );
 }
+
+
 
 class Header extends React.Component {
 
@@ -67,14 +70,78 @@ class Background extends React.Component {
   }
 }
 
+class InputMessage extends React.Component {
 
+    constructor(props) {
+      super(props);
+      this.state = {value: ''};
+  
+      this.handleChange = this.handleChange.bind(this);
+      this.handleSubmit = this.handleSubmit.bind(this);
+      this.submitted = false; 
+    }
+  
+    handleChange(event) {
+      this.setState({value: event.target.value});
+    }
+  
+    handleSubmit(event) {
+      event.preventDefault();
+      this.setState({submitted: true});
+      db.addNote(this.state.value);
+
+    }
+  
+    render() {
+      return (
+        <div className='inputMessage'>
+          {!this.state.submitted && (
+          <form onSubmit={this.handleSubmit}>
+            <label>
+              Enter your own message to the seniors!
+              <input className="inputBox" type="text" placeholder="Your message here" value={this.state.value} onChange={this.handleChange} />
+            </label>
+            <input className="submit" type="submit" value="Submit" />
+          </form>
+          )}
+          {this.state.submitted && (
+            <div className="afterSubmit">Your message has been submitted!</div>
+          )}
+        </div>
+      );
+    }
+  
+}
 
 class Messages extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      approved: [], 
+    };
+  }
+
+  componentDidMount() {
+    const setApproved = (value) => {
+      this.setState({approved: Object.entries(value)})
+    }
+    db.fetchApproved(setApproved);
+  }
 
   render() {
-    
     return (
       <div className="messages">
+        <InputMessage/>
+        <h3>Messages for the seniors: </h3>
+        <div className="message-column">
+          {this.state.approved.map(approvedNote => {
+            return (
+              <div className="approvedMessage">
+                {approvedNote[1]}
+              </div>
+            )
+          })}
+        </div>
       </div>
     );
   }
@@ -159,17 +226,17 @@ class Articles extends React.Component {
 
   renderArticle(i) {
     if(this.state.articles[i].hasMouse === 'no'){
-    return ( 
-      <Article 
-        onMouseEnter = {() => this.handleMouse(i)}
-        onMouseLeave = {() => this.handleLeave(i)}
-        title={this.state.articles[i].title} 
-        URL={this.state.articles[i].URL}
-        onClick = {() => this.handleClick(this.state.articles[i].URL)}
-        imageURL={this.state.articles[i].imageURL}
-        author={this.state.articles[i].author}
-      />
-          );
+      return ( 
+        <Article 
+          onMouseEnter = {() => this.handleMouse(i)}
+          onMouseLeave = {() => this.handleLeave(i)}
+          title={this.state.articles[i].title} 
+          URL={this.state.articles[i].URL}
+          onClick = {() => this.handleClick(this.state.articles[i].URL)}
+          imageURL={this.state.articles[i].imageURL}
+          author={this.state.articles[i].author}
+        />
+            );
     }
     else{
       return(
@@ -205,10 +272,7 @@ class Articles extends React.Component {
 }
 
 class Page extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
+  
 
   render() {
     // const history = this.state.history; 
