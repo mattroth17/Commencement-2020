@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import im_background from './class_of_2020.jpg';
-import { Map } from 'immutable';
 import * as db from './services/datastore';
 
 
@@ -79,6 +78,7 @@ class InputMessage extends React.Component {
   
       this.handleChange = this.handleChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
+      this.submitted = false; 
     }
   
     handleChange(event) {
@@ -87,18 +87,27 @@ class InputMessage extends React.Component {
   
     handleSubmit(event) {
       event.preventDefault();
+      this.setState({submitted: true});
       db.addNote(this.state.value);
+
     }
   
     render() {
       return (
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            Enter your own message to the seniors!
-            <input type="text" value={this.state.value} onChange={this.handleChange} />
-          </label>
-          <input type="submit" value="Submit" />
-        </form>
+        <div className='inputMessage'>
+          {!this.state.submitted && (
+          <form onSubmit={this.handleSubmit}>
+            <label>
+              Enter your own message to the seniors!
+              <input className="inputBox" type="text" placeholder="Your message here" value={this.state.value} onChange={this.handleChange} />
+            </label>
+            <input className="submit" type="submit" value="Submit" />
+          </form>
+          )}
+          {this.state.submitted && (
+            <div className="afterSubmit">Your message has been submitted!</div>
+          )}
+        </div>
       );
     }
   
@@ -108,34 +117,31 @@ class Messages extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      messages: Map(),
-      message_count: 1,
-      pending: [],
+      approved: [], 
     };
   }
 
   componentDidMount() {
-    const setState = (value) => {
-      this.setState({pending: Object.entries(value)})
+    const setApproved = (value) => {
+      this.setState({approved: Object.entries(value)})
     }
-    db.fetchPending(setState);
-  }
-
-  approveNote = (noteID) => {
-    db.approveNote(noteID)
+    db.fetchApproved(setApproved);
   }
 
   render() {
     return (
       <div className="messages">
         <InputMessage/>
-        <button onClick={this.approveNote}>Approve</button>
-        {this.state.pending.map(pendingNote => {
-          return(<div>
-            {pendingNote[1]}
-            <button onClick={() => this.approveNote(pendingNote[0])}>Approve</button>
-            </div>)
-        })}
+        <h3>Messages for the seniors: </h3>
+        <div className="message-column">
+          {this.state.approved.map(approvedNote => {
+            return (
+              <div className="approvedMessage">
+                {approvedNote[1]}
+              </div>
+            )
+          })}
+        </div>
       </div>
     );
   }
