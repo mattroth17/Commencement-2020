@@ -86,14 +86,8 @@ class InputMessage extends React.Component {
     }
   
     handleSubmit(event) {
-      alert('A message was submitted: ' + this.state.value);
       event.preventDefault();
-      
-    }
-
-    // this function does not work
-    addMessage(id, newMessage) {
-      db.addNote(id, newMessage);
+      db.addNote(this.state.value);
     }
   
     render() {
@@ -110,22 +104,38 @@ class InputMessage extends React.Component {
   
 }
 
-
-
 class Messages extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       messages: Map(),
-      message_count: 1
+      message_count: 1,
+      pending: [],
     };
   }
 
+  componentDidMount() {
+    const setState = (value) => {
+      this.setState({pending: Object.entries(value)})
+    }
+    db.fetchPending(setState);
+  }
+
+  approveNote = (noteID) => {
+    db.approveNote(noteID)
+  }
+
   render() {
-    
     return (
       <div className="messages">
-        <InputMessage/> 
+        <InputMessage/>
+        <button onClick={this.approveNote}>Approve</button>
+        {this.state.pending.map(pendingNote => {
+          return(<div>
+            {pendingNote[1]}
+            <button onClick={() => this.approveNote(pendingNote[0])}>Approve</button>
+            </div>)
+        })}
       </div>
     );
   }
