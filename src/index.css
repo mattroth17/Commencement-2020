@@ -122,16 +122,13 @@ body {
 .inputBox {
   width: 100%;
   height: 200px;
-  border-radius: 4px;
   position: relative;
 }
 
 .submit {
   width: 100%;
   height: 56px;
-  border-radius: 4px;
   position: relative;
-  background-color: rgba(36, 80, 175, 0.3);
   transition: 0.3s all;
 }
 
@@ -146,4 +143,16 @@ body {
   border: 1px solid #999;
   font-size: 14px;
   text-align: center;
+}
+
+.after_submit_image { 
+  width: 25%;
+  height: auto;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.after_submit_message {
+  text-align: center; 
 }
