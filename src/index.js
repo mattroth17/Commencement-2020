@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import im_background from './class_of_2020.jpg';
+import after_submit from './teal-check-mark.png';
 import * as db from './services/datastore';
 
 
@@ -11,7 +12,7 @@ function Article(props) {
     onClick={props.onClick}
     onMouseEnter = {props.onMouseEnter}
     onMouseLeave = {props.onMouseLeave}>
-      <img className='article_image' src={props.imageURL} />
+      <img className='article_image' src={props.imageURL} alt="article thumbnail" />
       <div className='article_title'>{props.title}</div>
       <div className='article_author'>{props.author}</div>
     </button>
@@ -98,14 +99,17 @@ class InputMessage extends React.Component {
           {!this.state.submitted && (
           <form onSubmit={this.handleSubmit}>
             <label>
-              Enter your own message to the seniors!
+              Leave a message for the seniors!
               <input className="inputBox" type="text" placeholder="Your message here" value={this.state.value} onChange={this.handleChange} />
             </label>
             <input className="submit" type="submit" value="Submit" />
           </form>
           )}
           {this.state.submitted && (
-            <div className="afterSubmit">Your message has been submitted!</div>
+            <div className="afterSubmit">
+              <h2 classNam="after_submit_message">Your message has been submitted!</h2>
+              <img className='after_submit_image' src={after_submit} alt="green check mark"/>
+              </div>
           )}
         </div>
       );
