@@ -66,6 +66,7 @@ class Background extends React.Component {
     return (
       <div className="background">
         <img className="background-image" src={im_background} alt="class pic"/>
+        <h4><span>Congratulations to our Dartmouth College class of 2020!</span></h4>
       </div>
     );
   }
