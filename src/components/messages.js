@@ -13,7 +13,7 @@ export default class Messages extends React.Component {
   
     componentDidMount() {
       const setApproved = (value) => {
-        this.setState({approved: Object.entries(value)})
+        if (value) this.setState({approved: Object.entries(value)})
       }
       db.fetchApproved(setApproved);
     }
@@ -31,7 +31,7 @@ export default class Messages extends React.Component {
           <Stack size={100}></Stack>
           <Box dir="row">
               <Queue size={100}></Queue>
-              <Box dir="row" wrap>
+              <Box dir="row">
               {this.state.approved.map(approvedNote => {
                 return (
                   <>
