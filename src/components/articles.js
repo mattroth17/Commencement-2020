@@ -1,5 +1,5 @@
 import React from 'react';
-
+import {Box, Stack} from './layout';
 
 export default class Articles extends React.Component {
     constructor(props) {
@@ -107,47 +107,40 @@ export default class Articles extends React.Component {
   
     render() {
       return (
-        <div className="articles">
-          <div className="article-row">
-            {this.renderArticle(0)}
-            {this.renderArticle(1)}
-          </div>
-          <div className="article-row">
-            {this.renderArticle(2)}
-            {this.renderArticle(3)}
-          </div>
-          <div className="article-row">
-            {this.renderArticle(4)}
-            {this.renderArticle(5)}
-          </div>
-        </div>
+        <Box dir="col" className="articles">
+          {this.state.articles.map((article, idx) => {
+            return this.renderArticle(idx);
+          })}
+        </Box>
       );
     }
-  }
+}
 
-  function Article(props) {
-    return (
-      <button className='article' 
+function Article(props) {
+  return (
+    <Box dir="col" width={350} pad={[25, 50]} className='article'
       onClick={props.onClick}
       onMouseEnter = {props.onMouseEnter}
       onMouseLeave = {props.onMouseLeave}>
-        <img className='article_image' src={props.imageURL} alt="article thumbnail" />
-        <div className='article_title'>{props.title}</div>
-        <div className='article_author'>{props.author}</div>
-      </button>
-    );
-  }
-  
-  function Abstract(props) {
-    return (
-      <button className='article' 
+      <img className='article_image' src={props.imageURL} alt="article thumbnail" />
+      <Stack size={25}></Stack>
+      <div className='article_title'>{props.title}</div>
+      <Stack size={10}></Stack>
+      <div className='article_author'>{props.author}</div>
+    </Box>
+  );
+}
+
+function Abstract(props) {
+  return (
+    <Box dir="col" width={300} className='article'
       onClick={props.onClick}
       onMouseEnter = {props.onMouseEnter}
       onMouseLeave = {props.onMouseLeave}>
-        <div className='article_abstract'>{props.abstract}</div>
-      </button>
-    );
-  }
+      <div className='article_abstract'>{props.abstract}</div>
+    </Box>
+  );
+}
   
   
 

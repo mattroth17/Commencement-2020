@@ -1,0 +1,192 @@
+body {
+  font: 14px "Century Gothic", Futura, sans-serif;
+  margin: 0px;
+}
+
+* {
+  box-sizing: border-box;
+
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    &::-webkit-scrollbar {
+    display: none;
+    }
+    /* Hide scrollbar for IE and Edge */
+    -ms-overflow-style: none;
+}
+
+.background {
+  flex: 1;
+  /* height: fit-content; */
+}
+
+.background-image { 
+  width: 100vw;
+  /* height: auto; */
+}
+
+h4{
+    position: absolute;
+    top: 50px;
+    left: 22%;
+    text-align: center;
+}
+
+.m {
+  position: absolute;
+  top: 100px;
+  left: 100px;
+
+  .congrats {
+    background-color: rgba(0, 105, 62, 0.4);
+    backdrop-filter: blur(10px);
+    padding: 0 25px;
+    font-size: 48px;
+    font-weight: 900;
+    color: white;
+    &.one {
+      transform: rotate(-2deg);
+    }
+    &.two {
+      transform: rotate(2deg);
+    }
+  }
+}
+
+.a {
+  position: relative;
+}
+
+.articles {
+  z-index: 9;
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  overflow-y: scroll;
+  backdrop-filter: blur(10px);
+  background-color: rgba(0, 0, 0, 0.1);
+  /* border-left: 10px white solid; */
+}
+
+.article {
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 34px;
+  text-align: center;
+  cursor: pointer;
+  filter: brightness(70%);
+  filter: saturate(70%);
+  &:hover {
+    filter: brightness(120%);
+    filter: saturate(150%);
+  }
+}
+
+.article_image {
+  display: flex; 
+  width: 100%; 
+  height: auto; 
+}
+
+.article_title {
+  font-family: 'Open Sans', sans-serif;
+  /* font-weight: bold; */
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: bold;
+  text-align: left;
+  color: white;
+}
+
+.article_author {
+  font-weight: 300;
+  font-size: 14px;
+  text-align: left;
+  color: white;
+}
+
+.article_abstract {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 16px;
+  text-align: left;
+  color: white;
+}
+
+.messages {
+  z-index: 10;
+  box-shadow: 0px 50px 100px rgba(0, 0, 0, 0.25);
+  background-color: #12312b;
+  position: relative;
+  /* color: white; */
+}
+
+.message-box {
+  max-width: 500px;
+  max-height: 200px;
+  overflow: hidden;
+  background-color: white;
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.4);
+  font-size: 24px;
+  padding: 25px;
+}
+
+.dear {
+  color: white;
+  font-size: 48px;
+  font-family: 'Permanent Marker', cursive;
+}
+
+.modal-content {
+  background-color: rgba(0, 0, 0, 0.0) !important;
+  border: none !important;
+
+  textarea {
+    border-radius: 5px;
+    background-color: rgba(256, 256, 256, 0.9);
+    height: 100px;
+    padding: 10px;
+  }
+
+  .submit-button {
+    color: white;
+    font-size: 18px;
+    filter: brightness(70%);
+    cursor: pointer;
+  
+    &:hover {
+      filter: brightness(120%);
+    }
+  }
+}
+
+.write-button {
+  position: absolute;
+  bottom: 100px;
+  background-color: white;
+  color: #12312b;
+  font-size: 24px;
+  font-weight: bold;
+  padding: 15px;
+  border-radius: 15px;
+  cursor: pointer;
+
+  &:hover {
+    filter: brightness(120%);
+  }
+}
+
+
+.after_submit_image { 
+  width: 25%;
+  height: auto;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.after_submit_message {
+  text-align: center; 
+}
