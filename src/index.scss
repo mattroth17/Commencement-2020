@@ -132,12 +132,19 @@ h4{
 
 .message-box {
   max-width: 500px;
-  max-height: 200px;
+  max-height: 300px;
   overflow: hidden;
   background-color: white;
   box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.4);
   font-size: 24px;
   padding: 25px;
+  transition: max-height 10000ms;
+
+  &:hover {
+    transition: max-height 10000ms;
+    max-height: 10000px !important;
+    box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+  }
 }
 
 .dear {

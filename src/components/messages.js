@@ -19,7 +19,7 @@ export default class Messages extends React.Component {
     }
 
     renderMessage = (mess) => {
-      if (mess.length > 170) return `${mess.substring(0, 170)}...`;
+      if (mess.length > 170) return mess; // `${mess.substring(0, 170)}...`;
       else return mess;
     }
   
@@ -31,7 +31,7 @@ export default class Messages extends React.Component {
           <Stack size={100}></Stack>
           <Box dir="row">
               <Queue size={100}></Queue>
-              <Box dir="row">
+              <Box dir="row" wrap>
               {this.state.approved.map(approvedNote => {
                 return (
                   <>
