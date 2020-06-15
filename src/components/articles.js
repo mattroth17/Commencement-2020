@@ -94,7 +94,30 @@ export default class Articles extends React.Component {
             author: 'Christina Baris and Ioana Andrada Pantelimon', 
             abstract: ''
           }, 
-          
+          {
+            hasMouse: 'no',
+            title: 'Han: Graduates of Pandemic',
+            URL: 'https://www.thedartmouth.com/article/2020/06/han-graduates-of-pandemic',
+            imageURL: 'https://snworksceo.imgix.net/drt/a3c4f0cf-626c-4d20-a972-cf93cd3acbb0.sized-1000x1000.jpg?w=1000',
+            author: 'Debora Hyemin Han', 
+            abstract: ''
+          }, 
+          {
+            hasMouse: 'no',
+            title: 'Fredman: On Plans and Laughter',
+            URL: 'https://www.thedartmouth.com/article/2020/06/fredman-on-plans-and-laughter',
+            imageURL: 'https://snworksceo.imgix.net/drt/fb7ed98d-3ba6-4b7d-9623-1a419ffa4f30.sized-1000x1000.jpg?w=1000',
+            author: 'Alex Fredman', 
+            abstract: ''
+          }, 
+          {
+            hasMouse: 'no',
+            title: "Sheinberg: Keeping the Door Open", 
+            URL: 'https://www.thedartmouth.com/article/2020/06/sheinberg-keeping-the-door-open',
+            imageURL: 'https://snworksceo.imgix.net/drt/91ba944e-d8ee-473d-8389-4352d5a19c37.sized-1000x1000.jpg?w=1000',
+            author: 'Aidan Sheinberg', 
+            abstract: ''
+          }, 
         
         ],
         
