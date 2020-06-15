@@ -35,7 +35,7 @@ export default class Messages extends React.Component {
               {this.state.approved.map(approvedNote => {
                 return (
                   <>
-                  <Box dir="col">
+                  <Box dir="col" align="flex">
                     <div className="message-box" style={{ transform: `rotate(${(Math.random() * 5) * (Math.floor(Math.random() * 2) === 1 ? 1 : -1)}deg)` }}>
                       {this.renderMessage(approvedNote[1])}
                     </div>
