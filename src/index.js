@@ -5,10 +5,9 @@ import './index.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 // importing components
-import {Modal, Form} from 'react-bootstrap';
+import {Modal, Toast} from 'react-bootstrap';
 import {Box, Stack, Queue} from './components/layout';
 import Messages from './components/messages';
-import Header from './components/header';
 import Articles from './components/articles'; 
 import Background from './components/background';
 
@@ -19,6 +18,7 @@ class Page extends React.Component {
     this.state = {
       showModal: false,
       message: null,
+      sentMessage: false,
     }
   }
     
@@ -26,6 +26,12 @@ class Page extends React.Component {
     
     return (
       <>
+        <Toast className="toast" onClose={() => this.setState({message: null, sentMessage: false})} show={this.state.sentMessage} delay={3000} autohide>
+          <Toast.Header className="toast-header" closeButton={false}>
+            <strong className="mr-auto">Thank you!</strong>
+          </Toast.Header>
+          <Toast.Body className="toast-body">Your message will show here once we approve it in a bit!</Toast.Body>
+        </Toast>
         <Box dir="row" className="a">
           <Background/>
           <Articles/>
@@ -44,7 +50,7 @@ class Page extends React.Component {
                   <Box dir="row" justify="end">
                     <div className="submit-button" onClick={() => this.setState({showModal: false})}>Cancel</div>
                     <Queue size={50}></Queue>
-                    <div className="submit-button" onClick={() => {db.addNote(this.state.message); this.setState({showModal: false});}}>Submit</div>
+                    <div className="submit-button" onClick={() => {db.addNote(this.state.message); this.setState({showModal: false, sentMessage: true});}}>Submit</div>
                   </Box>
               </Box>
         </Modal>
