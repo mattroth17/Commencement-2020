@@ -1,7 +1,7 @@
 # Commencement-2020
 Commencement 2020 Special Edition Website for The Dartmouth (college newspaper). Features scroll-bar with articles on the right, messages for graduating seniors below, and a button which displays a modal to leave your own message. Data storage implemented with Firebase. 
 
-![Link to Deployed Site](http://dartmouth-2020.surge.sh/)
+[Link to Deployed Site](http://dartmouth-2020.surge.sh/)
 
 
 ## Screencaps
