@@ -3,6 +3,35 @@ Commencement 2020 Special Edition Website for The Dartmouth (college newspaper).
 
 [Link to Deployed Site](http://dartmouth-2020.surge.sh/)
 
+## To Run
+* `git clone https://github.com/mattroth17/Commencement-2020`
+* `yarn install`
+* `yarn start`
+
+## To Deploy (@ dartmouth-2020.surge.sh)
+* `yarn deploy`
+
+## Technical Tools
+*  `React`, `Boostrap` for styling
+* Used Firebase real-time database to store messages/approve them
+
+## Languages
+* JavaScript, HTML/CSS
+
+## Project Structure
+
+### Directories
+* `src/`
+    * `components/`
+        * `header.js`: displays text 'Hello Class of 2020, Congrats!'
+        * `background.js`: displays class of 2020 picture in front of Dartmouth Hall
+        * `articles.js`: displays article previews with image, title, and author; link to full articles on thedartmouth.com
+        * `messages.js`: displays messages already left for seniors; includes button which onClick displays modal to create a new message
+        
+    * `services/`
+        *
+    
+
 
 ## Screencaps
 
