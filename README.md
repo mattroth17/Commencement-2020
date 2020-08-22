@@ -29,12 +29,9 @@ Commencement 2020 Special Edition Website for The Dartmouth (college newspaper).
         * `messages.js`: displays messages already left for seniors; includes button which onClick displays modal to create a new message
         
     * `services/`
-        *
+        * `datastores.js`: connects to Firebase, contains functions for getting all messages and creating a new message
     
-
-
 ## Screencaps
-
 
 ### Main Page
 ![](https://user-images.githubusercontent.com/59703535/88987555-ed3a3480-d29b-11ea-8659-cde954616c00.png)
